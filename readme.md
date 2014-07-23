@@ -4,6 +4,8 @@ Ported from the reference implementation at https://github.com/trezor/python-mne
 
 Mnemonic code for generating deterministic keys
 
+BIP39 Specification at https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
+
 # Usage
 
 ```
