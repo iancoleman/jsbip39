@@ -129,7 +129,14 @@ var Mnemonic = function(language) {
     }
 
     function normalizeString(str) {
-        return str.normalize("NFKD");
+        if (typeof str.normalize == "function") {
+            return str.normalize("NFKD");
+        }
+        else {
+            // TODO decide how to handle this in the future.
+            // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+            return str;
+        }
     }
 
     function byteArrayToBinaryString(data) {
