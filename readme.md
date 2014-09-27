@@ -44,14 +44,6 @@ $ python -m SimpleHTTPServer
 
 Open `http://localhost:8000/test/` in your browser
 
-# Minifcation
-
-This library was minified to jsbip39.min.js using Google Closure Compiler
-
-`java -jar compiler.jar --js jsbip39.js --js_output_file jsbip39.min.js --language_in ECMASCRIPT5`
-
-https://developers.google.com/closure/compiler/
-
 # Thanks
 
 This code uses asmCrypto
