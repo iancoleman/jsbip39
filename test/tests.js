@@ -12,6 +12,12 @@
 var language = "";
 var vectors = [];
 
+QUnit.test("hashing", function(assert) {
+    var val = "あ"
+    var hash = "dc5a4d3d82f7e15792959dc661538ae0e541ce66494516f5c9cfd9cd3308494d"
+    assert.equal(asmCrypto.SHA256.hex(val), hash);
+});
+
 function hexStringToArray(str) {
     var arrayLen = str.length / 2;
     var array = [];
