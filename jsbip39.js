@@ -70,7 +70,7 @@ var Mnemonic = function(language) {
         }
 
         //h = hashlib.sha256(data).hexdigest()
-        var data = byteArrayToAsciiString(byteArray);
+        var data = byteArrayToWordArray(byteArray);
         var hash = sjcl.hash.sha256.hash(data);
         var h = sjcl.codec.hex.fromBits(hash);
 
@@ -151,12 +151,17 @@ var Mnemonic = function(language) {
         }
     }
 
-    function byteArrayToAsciiString(data) {
-        var str = "";
-        for (var i=0; i<data.length; i++) {
-            str += String.fromCharCode(data[i]);
+    function byteArrayToWordArray(data) {
+        var a = [];
+        for (var i=0; i<data.length/4; i++) {
+            v = 0;
+            v += data[i*4 + 0] << 8 * 3;
+            v += data[i*4 + 1] << 8 * 2;
+            v += data[i*4 + 2] << 8 * 1;
+            v += data[i*4 + 3] << 8 * 0;
+            a.push(v);
         }
-        return str;
+        return a;
     }
 
     function byteArrayToBinaryString(data) {

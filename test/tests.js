@@ -52,6 +52,15 @@ function checkList(assert) {
     }
 })();
 
+// mnemonic.generate
+QUnit.test("mnemonic.generate", function(assert) {
+    var mnemo = new Mnemonic("english");
+    for (var i=0; i<30; i++) {
+        var m = mnemo.generate();
+        assert.ok(mnemo.check(m));
+    }
+});
+
 // test_failed_checksum
 QUnit.test("test_failed_checksum", function(assert) {
     var code = 'bless cloud wheel regular tiny venue bird web grief security dignity zoo';
