@@ -37,10 +37,10 @@ function checkList(assert) {
     var mnemo = new Mnemonic(language);
     for (var i=0; i<vectors.length; i++) {
         var v = vectors[i];
-        var array = hexStringToArray(v[0]);
+        var array = hexStringToArray(v.entropy);
         var code = mnemo.toMnemonic(array);
-        var seed = mnemo.toSeed(code, "TREZOR");
-        assert.ok(mnemo.check(v[1]));
+        var seed = mnemo.toSeed(code, v.passphrase);
+        assert.ok(mnemo.check(v.mnemonic));
     }
 }
 
