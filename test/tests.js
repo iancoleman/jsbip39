@@ -87,10 +87,27 @@ QUnit.test("test_lengths", function(assert) {
     for (var i=0; i<languages.length; i++) {
         var language = languages[i];
         var wordlist = WORDLISTS[language];
-        for (var i=0; i<wordlist.length; i++) {
-            var word = wordlist[i];
+        for (var j=0; j<wordlist.length; j++) {
+            var word = wordlist[j];
             assert.ok(word.length >= 3);
             assert.ok(word.length <= 8);
+        }
+    }
+});
+
+// Test French lengths
+// from https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#french
+QUnit.test("test_lengths", function(assert) {
+    var languages = ["french"];
+    for (var i=0; i<languages.length; i++) {
+        var language = languages[i];
+        var wordlist = WORDLISTS[language];
+        for (var j=0; j<wordlist.length; j++) {
+            var word = wordlist[j];
+            // Wordlist uses combining diacritical marks, so must normalize for correct length
+            var wordnorm = word.normalize();
+            assert.ok(wordnorm.length >= 5);
+            assert.ok(wordnorm.length <= 8);
         }
     }
 });
@@ -140,7 +157,7 @@ QUnit.test("test_sorted_unique", function(assert) {
 // from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L113
 // and https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki#wordlist
 QUnit.test("test_root_len", function(assert) {
-    var languages = ["english", "spanish"];
+    var languages = ["english", "spanish", "french"];
     for (var i=0; i<languages.length; i++) {
         var language = languages[i];
         var wordlist = WORDLISTS[language];
@@ -277,3 +294,8 @@ QUnit.test("test_words_unique_to_language", function(assert) {
         }
     }
 });
+
+// French: No very similar words with 1 letter of difference. TODO
+// French: No words with "ô;â;ç;ê;œ;æ;î;ï;û;ù;à;ë;ÿ". TODO
+// French: No words ending by "é;ée;è;et;ai;ait". TODO
+// French: No words in conflict with the spelling corrections of 1990 TODO
