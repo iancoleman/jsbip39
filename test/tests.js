@@ -138,8 +138,9 @@ QUnit.test("test_sorted_unique", function(assert) {
 
 // test_root_len
 // from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L113
+// and https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki#wordlist
 QUnit.test("test_root_len", function(assert) {
-    var languages = ["english"]; // Do not test Japanese here
+    var languages = ["english", "spanish"];
     for (var i=0; i<languages.length; i++) {
         var language = languages[i];
         var wordlist = WORDLISTS[language];
@@ -255,27 +256,6 @@ QUnit.test("test_ideographic_space", function(assert) {
     // has ideographic spaces
     var ideographicSpace = "\u3000";
     assert.ok(m.indexOf(ideographicSpace) > -1);
-});
-
-// Test words are unique for first 4 characters
-// https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki#wordlist
-QUnit.test("test_unique_first_four_chars", function(assert) {
-    var languages = [
-        "english",
-        "spanish",
-    ];
-    for (var i=0; i<languages.length; i++) {
-        var language = languages[i];
-        var wordlist = WORDLISTS[language];
-        var uniquePrefixes = {};
-        for (var j=0; j<wordlist.length; j++) {
-            var word = wordlist[j];
-            var prefix = word.substring(0,5);
-            var isUnique = !(prefix in uniquePrefixes);
-            assert.ok(isUnique);
-            uniquePrefixes[prefix] = true;
-        }
-    }
 });
 
 // Special Spanish characters like 'ñ', 'ü', 'á', etc... are considered equal to 'n', 'u', 'a'
