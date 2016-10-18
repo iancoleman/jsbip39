@@ -254,3 +254,24 @@ QUnit.test("test_ideographic_space", function(assert) {
     var ideographicSpace = "\u3000";
     assert.ok(m.indexOf(ideographicSpace) > -1);
 });
+
+// Test words are unique for first 4 characters
+// https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki#wordlist
+QUnit.test("test_unique_first_four_chars", function(assert) {
+    var languages = [
+        "english",
+        "spanish",
+    ];
+    for (var i=0; i<languages.length; i++) {
+        var language = languages[i];
+        var wordlist = WORDLISTS[language];
+        var uniquePrefixes = {};
+        for (var j=0; j<wordlist.length; j++) {
+            var word = wordlist[j];
+            var prefix = word.substring(0,5);
+            var isUnique = !(prefix in uniquePrefixes);
+            assert.ok(isUnique);
+            uniquePrefixes[prefix] = true;
+        }
+    }
+});
