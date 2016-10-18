@@ -114,6 +114,7 @@ QUnit.test("test_lengths", function(assert) {
 
 // Test Italian lengths
 // from https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#italian
+// see https://github.com/bitcoin/bips/pull/468
 QUnit.test("test_lengths", function(assert) {
     var languages = ["italian"];
     for (var i=0; i<languages.length; i++) {
@@ -122,7 +123,7 @@ QUnit.test("test_lengths", function(assert) {
         for (var j=0; j<wordlist.length; j++) {
             var word = wordlist[j];
             assert.ok(word.length >= 4);
-            assert.ok(word.length <= 8);
+            assert.ok(word.length <= 9);
         }
     }
 });
