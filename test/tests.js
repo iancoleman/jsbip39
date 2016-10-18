@@ -299,7 +299,7 @@ QUnit.test("test_ideographic_space", function(assert) {
 // https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#spanish
 QUnit.test("test_words_unique_to_language", function(assert) {
     var uniqueWordsLanguages = ["spanish", "italian"];
-    for (var i=0; i<uniqueWordsLanguages; i++) {
+    for (var i=0; i<uniqueWordsLanguages.length; i++) {
         var uniqueWordsLanguage = uniqueWordsLanguages[i];
         for (var language in WORDLISTS) {
             if (language == uniqueWordsLanguage) {
