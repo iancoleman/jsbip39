@@ -180,7 +180,9 @@ QUnit.test("test_similarity", function(assert) {
         'vw', 'vy'
     ]
 
-    for (var language in WORDLISTS) {
+    var languages = ["english"];
+    for (var i=0; i<languages.length; i++) {
+        var language = languages[i];
         var wordlist = WORDLISTS[language];
         for (var i=0; i<wordlist.length; i++) {
             for (var j=0; j<wordlist.length; j++) {
