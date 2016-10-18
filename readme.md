@@ -33,6 +33,13 @@ m.check(invalidMnemonic);
 false
 ```
 
+# Supported Languages
+
+```
+var m = new Mnemonic("english")
+var m = new Mnemonic("japanese")
+```
+
 # Tests
 
 Tests run in the browser.
@@ -43,6 +50,10 @@ $ python -m SimpleHTTPServer
 ```
 
 Open `http://localhost:8000/test/` in your browser
+
+# Node / NPM
+
+If you prefer to use node / npm please have a look at [bitcoinjs/bip39](https://github.com/bitcoinjs/bip39).
 
 # Thanks
 
