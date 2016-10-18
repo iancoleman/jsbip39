@@ -112,11 +112,26 @@ QUnit.test("test_lengths", function(assert) {
     }
 });
 
+// Test Italian lengths
+// from https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#italian
+QUnit.test("test_lengths", function(assert) {
+    var languages = ["italian"];
+    for (var i=0; i<languages.length; i++) {
+        var language = languages[i];
+        var wordlist = WORDLISTS[language];
+        for (var j=0; j<wordlist.length; j++) {
+            var word = wordlist[j];
+            assert.ok(word.length >= 4);
+            assert.ok(word.length <= 8);
+        }
+    }
+});
+
 // test_validchars
 // from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L86
 QUnit.test("test_validchars", function(assert) {
     var alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    var languages = ["english"];
+    var languages = ["english", "italian"];
     for (var i=0; i<languages.length; i++) {
         var language = languages[i];
         var wordlist = WORDLISTS[language];
@@ -157,7 +172,7 @@ QUnit.test("test_sorted_unique", function(assert) {
 // from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L113
 // and https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki#wordlist
 QUnit.test("test_root_len", function(assert) {
-    var languages = ["english", "spanish", "french"];
+    var languages = ["english", "spanish", "french", "italian"];
     for (var i=0; i<languages.length; i++) {
         var language = languages[i];
         var wordlist = WORDLISTS[language];
@@ -282,15 +297,19 @@ QUnit.test("test_ideographic_space", function(assert) {
 // There are no words in common between the Spanish wordlist and any other language wordlist.
 // https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#spanish
 QUnit.test("test_words_unique_to_language", function(assert) {
-    for (var language in WORDLISTS) {
-        if (language == "spanish") {
-            continue;
-        }
-        var wordlist = WORDLISTS[language];
-        for (var i=0; i<wordlist.length; i++) {
-            var word = wordlist[i];
-            var isInSpanishList = WORDLISTS["spanish"].indexOf(word) > -1;
-            assert.ok(!isInSpanishList);
+    var uniqueWordsLanguages = ["spanish", "italian"];
+    for (var i=0; i<uniqueWordsLanguages; i++) {
+        var uniqueWordsLanguage = uniqueWordsLanguages[i];
+        for (var language in WORDLISTS) {
+            if (language == uniqueWordsLanguage) {
+                continue;
+            }
+            var wordlist = WORDLISTS[language];
+            for (var j=0; j<wordlist.length; j++) {
+                var word = wordlist[j];
+                var isUnique = WORDLISTS[uniqueWordsLanguage].indexOf(word) > -1;
+                assert.ok(!isUnique);
+            }
         }
     }
 });
