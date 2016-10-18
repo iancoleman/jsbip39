@@ -275,3 +275,23 @@ QUnit.test("test_unique_first_four_chars", function(assert) {
         }
     }
 });
+
+// Special Spanish characters like 'ñ', 'ü', 'á', etc... are considered equal to 'n', 'u', 'a'
+// https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#spanish
+// TODO
+
+// There are no words in common between the Spanish wordlist and any other language wordlist.
+// https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#spanish
+QUnit.test("test_words_unique_to_language", function(assert) {
+    for (var language in WORDLISTS) {
+        if (language == "spanish") {
+            continue;
+        }
+        var wordlist = WORDLISTS[language];
+        for (var i=0; i<wordlist.length; i++) {
+            var word = wordlist[i];
+            var isInSpanishList = WORDLISTS["spanish"].indexOf(word) > -1;
+            assert.ok(!isInSpanishList);
+        }
+    }
+});
