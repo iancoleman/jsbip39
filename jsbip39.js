@@ -93,11 +93,17 @@ var Mnemonic = function(language) {
             var idx = parseInt(b.substring(i * 11, (i + 1) * 11), 2);
             result.push(wordlist[idx]);
         }
-        return result.join(' ');
+        // Set space correctly depending on the language
+        // see https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#japanese
+        var space = " ";
+        if (language == "japanese") {
+            space = "\u3000"; // ideographic space
+        }
+        return result.join(space);
     }
 
     self.check = function(mnemonic) {
-        var mnemonic = mnemonic.split(' ')
+        var mnemonic = mnemonic.split(/\s/g)
         if (mnemonic.length % 3 > 0) {
             return false
         }

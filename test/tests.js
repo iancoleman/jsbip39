@@ -82,7 +82,9 @@ QUnit.test("test_collision", function(assert) {
 
 // test_lengths
 QUnit.test("test_lengths", function(assert) {
-    for (var language in WORDLISTS) {
+    var languages = ["english"]; // Do not test Japanese here
+    for (var i=0; i<languages.length; i++) {
+        var language = languages[i];
         var wordlist = WORDLISTS[language];
         for (var i=0; i<wordlist.length; i++) {
             var word = wordlist[i];
@@ -95,7 +97,9 @@ QUnit.test("test_lengths", function(assert) {
 // test_validchars
 QUnit.test("test_validchars", function(assert) {
     var alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    for (var language in WORDLISTS) {
+    var languages = ["english"]; // Do not test Japanese here
+    for (var i=0; i<languages.length; i++) {
+        var language = languages[i];
         var wordlist = WORDLISTS[language];
         for (var i=0; i<wordlist.length; i++) {
             var word = wordlist[i];
@@ -109,7 +113,9 @@ QUnit.test("test_validchars", function(assert) {
 
 // test_sorted_unique
 QUnit.test("test_sorted_unique", function(assert) {
-    for (var language in WORDLISTS) {
+    var languages = ["english"]; // Do not test Japanese here
+    for (var i=0; i<languages.length; i++) {
+        var language = languages[i];
         var wordlist = WORDLISTS[language];
         var clone = [];
         for (var i=0; i<wordlist.length; i++) {
@@ -129,7 +135,9 @@ QUnit.test("test_sorted_unique", function(assert) {
 
 // test_root_len
 QUnit.test("test_root_len", function(assert) {
-    for (var language in WORDLISTS) {
+    var languages = ["english"]; // Do not test Japanese here
+    for (var i=0; i<languages.length; i++) {
+        var language = languages[i];
         var wordlist = WORDLISTS[language];
         var mnemo = Mnemonic(language);
         var prefixes = [];
@@ -226,4 +234,16 @@ QUnit.test("test_utf8_nfkd", function(assert) {
     assert.equal(seed_nfkd, seed_nfc);
     assert.equal(seed_nfkd, seed_nfkc);
     assert.equal(seed_nfkd, seed_nfd);
+});
+
+// Test use of ideographic space for Japanese language
+QUnit.test("test_ideographic_space", function(assert) {
+    var mnemo = new Mnemonic("japanese");
+    var m = mnemo.generate();
+    // has no ascii spaces
+    var asciiSpace = " ";
+    assert.equal(m.indexOf(asciiSpace), -1);
+    // has ideographic spaces
+    var ideographicSpace = "\u3000";
+    assert.ok(m.indexOf(ideographicSpace) > -1);
 });
