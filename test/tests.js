@@ -81,8 +81,9 @@ QUnit.test("test_collision", function(assert) {
 });
 
 // test_lengths
+// from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L76
 QUnit.test("test_lengths", function(assert) {
-    var languages = ["english"]; // Do not test Japanese here
+    var languages = ["english"];
     for (var i=0; i<languages.length; i++) {
         var language = languages[i];
         var wordlist = WORDLISTS[language];
@@ -95,9 +96,10 @@ QUnit.test("test_lengths", function(assert) {
 });
 
 // test_validchars
+// from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L86
 QUnit.test("test_validchars", function(assert) {
     var alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    var languages = ["english"]; // Do not test Japanese here
+    var languages = ["english"];
     for (var i=0; i<languages.length; i++) {
         var language = languages[i];
         var wordlist = WORDLISTS[language];
@@ -112,8 +114,9 @@ QUnit.test("test_validchars", function(assert) {
 });
 
 // test_sorted_unique
+// from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L97
 QUnit.test("test_sorted_unique", function(assert) {
-    var languages = ["english"]; // Do not test Japanese here
+    var languages = ["english"];
     for (var i=0; i<languages.length; i++) {
         var language = languages[i];
         var wordlist = WORDLISTS[language];
@@ -134,6 +137,7 @@ QUnit.test("test_sorted_unique", function(assert) {
 });
 
 // test_root_len
+// from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L113
 QUnit.test("test_root_len", function(assert) {
     var languages = ["english"]; // Do not test Japanese here
     for (var i=0; i<languages.length; i++) {
@@ -151,6 +155,7 @@ QUnit.test("test_root_len", function(assert) {
 });
 
 // test_similarity
+// from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L135
 QUnit.test("test_similarity", function(assert) {
     var similar = [
         'ac', 'ae', 'ao',
@@ -213,6 +218,7 @@ QUnit.test("test_similarity", function(assert) {
 });
 
 // test_utf8_nfkd
+// from https://github.com/trezor/python-mnemonic/blob/f9f7720ab79b07a86e0c10071d56d2a3ed5ab27c/test_mnemonic.py#L196
 QUnit.test("test_utf8_nfkd", function(assert) {
     // The same sentence in various UTF-8 forms
     var words_nfkd = "Pr\u030ci\u0301s\u030cerne\u030c z\u030clut\u030couc\u030cky\u0301 ku\u030an\u030c u\u0301pe\u030cl d\u030ca\u0301belske\u0301 o\u0301dy za\u0301ker\u030cny\u0301 uc\u030cen\u030c be\u030cz\u030ci\u0301 pode\u0301l zo\u0301ny u\u0301lu\u030a";
@@ -237,6 +243,7 @@ QUnit.test("test_utf8_nfkd", function(assert) {
 });
 
 // Test use of ideographic space for Japanese language
+// from https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#japanese
 QUnit.test("test_ideographic_space", function(assert) {
     var mnemo = new Mnemonic("japanese");
     var m = mnemo.generate();
