@@ -290,5 +290,13 @@ var allVectors = {
             "passphrase": "メートルガバヴァぱばぐゞちぢ十人十色",
             "seed": "346b7321d8c04f6f37b49fdf062a2fddc8e1bf8f1d33171b65074531ec546d1d3469974beccb1a09263440fc92e1042580a557fdce314e27ee4eabb25fa5e5fe",
         }
+    ],
+    "spanish": [
+        {
+            "entropy": "00000000000000000000000000000000",
+            "mnemonic": "ábaco ábaco ábaco ábaco ábaco ábaco ábaco ábaco ábaco ábaco ábaco abierto",
+            "passphrase": "TREZOR",
+            "seed": "c55257c360c07c72029aebc1b53c05ed0362ada38ead3e3e9efa3708e53495531f09a6987599d18264c1e1c92f2cf141630c7a3c4ab7c81b2f001698e7463b04"
+        }
     ]
 }
