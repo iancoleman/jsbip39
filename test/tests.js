@@ -41,6 +41,8 @@ function checkList(assert) {
         var code = mnemo.toMnemonic(array);
         var seed = mnemo.toSeed(code, v.passphrase);
         assert.ok(mnemo.check(v.mnemonic));
+        assert.ok(v.mnemonic == code);
+        assert.ok(v.seed == seed);
     }
 }
 

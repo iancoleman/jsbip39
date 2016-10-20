@@ -302,7 +302,7 @@ var allVectors = {
             "entropy": "00000000000000000000000000000000",
             "mnemonic": "ábaco ábaco ábaco ábaco ábaco ábaco ábaco ábaco ábaco ábaco ábaco abierto",
             "passphrase": "TREZOR",
-            "seed": "c55257c360c07c72029aebc1b53c05ed0362ada38ead3e3e9efa3708e53495531f09a6987599d18264c1e1c92f2cf141630c7a3c4ab7c81b2f001698e7463b04"
+            "seed": "29a2ee16de47d07025de37e7d9c596869439f9bcd26a702d2bae64db2bf0f68383841c5444b5b3bd39dd720d2ebe59969e110e5955c8e6d32c6c3294fd87439b"
         }
     ],
     "chinese_simplified": [
@@ -310,7 +310,7 @@ var allVectors = {
             "entropy": "00000000000000000000000000000000",
             "mnemonic": "的 的 的 的 的 的 的 的 的 的 的 在",
             "passphrase": "TREZOR",
-            "seed": "c55257c360c07c72029aebc1b53c05ed0362ada38ead3e3e9efa3708e53495531f09a6987599d18264c1e1c92f2cf141630c7a3c4ab7c81b2f001698e7463b04"
+            "seed": "7f7c7f91ef81f0fb6a3b95b346c50e6472c1d554f8ba90637bad8afce4a4de87c322c1acafa2f6f5e9a8f9b2d2c40e9d389efdc2adbe4445c21a0939fb39e91f"
         }
     ],
     "chinese_traditional": [
@@ -318,7 +318,7 @@ var allVectors = {
             "entropy": "00000000000000000000000000000000",
             "mnemonic": "的 的 的 的 的 的 的 的 的 的 的 在",
             "passphrase": "TREZOR",
-            "seed": "c55257c360c07c72029aebc1b53c05ed0362ada38ead3e3e9efa3708e53495531f09a6987599d18264c1e1c92f2cf141630c7a3c4ab7c81b2f001698e7463b04"
+            "seed": "7f7c7f91ef81f0fb6a3b95b346c50e6472c1d554f8ba90637bad8afce4a4de87c322c1acafa2f6f5e9a8f9b2d2c40e9d389efdc2adbe4445c21a0939fb39e91f"
         }
     ],
     "french": [
@@ -326,7 +326,15 @@ var allVectors = {
             "entropy": "00000000000000000000000000000000",
             "mnemonic": "abaisser abaisser abaisser abaisser abaisser abaisser abaisser abaisser abaisser abaisser abaisser abeille",
             "passphrase": "TREZOR",
-            "seed": "c55257c360c07c72029aebc1b53c05ed0362ada38ead3e3e9efa3708e53495531f09a6987599d18264c1e1c92f2cf141630c7a3c4ab7c81b2f001698e7463b04"
+            "seed": "3bf3366c40256d7e2fca716fddf8673425c7c7e444af290ee1edf1bbf095e6e78a7190253f3e46f1e2069345d4b05ac17b242faa225c0a3e4d268976744e0698"
+        }
+    ],
+    "italian": [
+        {
+            "entropy": "00000000000000000000000000000000",
+            "mnemonic": "abaco abaco abaco abaco abaco abaco abaco abaco abaco abaco abaco abete",
+            "passphrase": "TREZOR",
+            "seed": "d2ae4bbd4efc4aba345b66dc2bfa4ea280d85810945ba4e100707694d5731c5a42ac0d0308ba9ad176966879328f1aa014fbcbeb46d671d9475c38254bf1eeb7"
         }
     ]
 }
