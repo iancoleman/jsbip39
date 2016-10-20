@@ -38,6 +38,11 @@ false
 ```
 var m = new Mnemonic("english")
 var m = new Mnemonic("japanese")
+var m = new Mnemonic("spanish")
+var m = new Mnemonic("chinese_simplified")
+var m = new Mnemonic("chinese_traditional")
+var m = new Mnemonic("french")
+var m = new Mnemonic("italian")
 ```
 
 # Tests
