@@ -280,6 +280,14 @@ QUnit.test("test_utf8_nfkd", function(assert) {
     assert.equal(seed_nfkd, seed_nfd);
 });
 
+// Test handling multiple consecutive spaces
+// See https://github.com/iancoleman/bip39/issues/19
+QUnit.test("test multiple spaces", function(assert) {
+    var mnemo = new Mnemonic("english");
+    var seed = mnemo.toSeed("urge cat  bid");
+    assert.ok(seed == "e0d441a3030c22ce7b271d39dfbdb8b6754bbff513af100689fe81a106b041855cad240b818051a326dedd1d7deb336b98a7eaf939e5ef5013e671c412f3a119");
+});
+
 // Test use of ideographic space for Japanese language
 // from https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#japanese
 QUnit.test("test_ideographic_space", function(assert) {
