@@ -325,6 +325,12 @@ QUnit.test("test_words_unique_to_language", function(assert) {
     }
 });
 
+QUnit.test("blank mnemonic", function(assert) {
+    var m = new Mnemonic("english");
+    var isValid = m.check("");
+    assert.ok(!isValid);
+});
+
 // French: No very similar words with 1 letter of difference. TODO
 // French: No words with "ô;â;ç;ê;œ;æ;î;ï;û;ù;à;ë;ÿ". TODO
 // French: No words ending by "é;ée;è;et;ai;ait". TODO
