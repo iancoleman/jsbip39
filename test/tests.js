@@ -9,9 +9,6 @@
  * Open http://localhost:8000/test/ in your browser
  */
 
-var language = "";
-var vectors = [];
-
 QUnit.test("hashing", function(assert) {
     var val = "あ";
     var hash = "dc5a4d3d82f7e15792959dc661538ae0e541ce66494516f5c9cfd9cd3308494d";
@@ -33,24 +30,27 @@ function hexStringToArray(str) {
 }
 
 // check_list
-function checkList(assert) {
-    var mnemo = new Mnemonic(language);
-    for (var i=0; i<vectors.length; i++) {
-        var v = vectors[i];
-        var array = hexStringToArray(v.entropy);
-        var code = mnemo.toMnemonic(array);
-        var seed = mnemo.toSeed(code, v.passphrase);
-        assert.ok(mnemo.check(v.mnemonic));
-        assert.ok(v.mnemonic == code);
-        assert.ok(v.seed == seed);
-    }
+function checkList(assert, language, vectors) {
 }
 
 // test_vectors
 (function() {
-    for (language in allVectors) {
-        vectors = allVectors[language];
-        QUnit.test("check_list", checkList);
+    for (var language in allVectors) {
+        var vectors = allVectors[language];
+        (function(testLanguage, testVectors) {
+            QUnit.test("check_list", function(assert) {
+                var mnemo = new Mnemonic(testLanguage);
+                for (var i=0; i<testVectors.length; i++) {
+                    var v = testVectors[i];
+                    var array = hexStringToArray(v.entropy);
+                    var code = mnemo.toMnemonic(array);
+                    var seed = mnemo.toSeed(code, v.passphrase);
+                    assert.ok(mnemo.check(v.mnemonic));
+                    assert.ok(v.mnemonic == code);
+                    assert.ok(v.seed == seed);
+                }
+            });
+        })(language, vectors);
     }
 })();
 
