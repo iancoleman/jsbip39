@@ -43,6 +43,7 @@ var m = new Mnemonic("chinese_simplified")
 var m = new Mnemonic("chinese_traditional")
 var m = new Mnemonic("french")
 var m = new Mnemonic("italian")
+var m = new Mnemonic("korean")
 ```
 
 # Tests
