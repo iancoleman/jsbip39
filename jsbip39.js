@@ -149,7 +149,7 @@ var Mnemonic = function(language) {
         // Set space correctly depending on the language
         // see https://github.com/bitcoin/bips/blob/master/bip-0039/bip-0039-wordlists.md#japanese
         var space = " ";
-        if (language == "japanese") {
+        if (language == "japanese" || language == "korean") {
             space = "\u3000"; // ideographic space
         }
         return words.join(space);
