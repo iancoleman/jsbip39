@@ -52,7 +52,7 @@ Tests run in the browser.
 
 ```
 $ cd /path/to/repo/
-$ python -m SimpleHTTPServer
+$ python -m http.server
 ```
 
 Open `http://localhost:8000/test/` in your browser
